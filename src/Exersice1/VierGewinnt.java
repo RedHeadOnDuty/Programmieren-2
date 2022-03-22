@@ -32,9 +32,10 @@ public class VierGewinnt {
                 gameGrid[i][j] = '.';
             }
         }
-        paintGrid();
+
         //game loop
         while(true){
+            paintGrid();
             playerMove(Player1);
             playerMove(Player2);
         }
