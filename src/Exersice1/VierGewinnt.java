@@ -52,21 +52,17 @@ public class VierGewinnt {
                 return true;
             }
         }
+        
+        //diagonal
+        for(int i = 0; i < 4; i++){
+
+        }
 
         if(gridIndexRow > 2) return false;
         //vertical
         //search bottommost
-        for(int i = gridIndexRow; i < rowCount; i++){
-            mutableRowIndex = i;
-            if (gameGrid[gridIndexRow][i] == playerIdentifier) {
-                continue;
-            }
-            mutableRowIndex = i - 1;
-            break;
-        }
-        System.out.println("search bottommost index index:" + mutableRowIndex);
-        for(int i = mutableRowIndex; i < mutableRowIndex + 4; i++){
-            if (gameGrid[gridIndexRow][i] != playerIdentifier) {
+        for(int i = gridIndexRow; i < gridIndexRow + 4; i++){
+            if (gameGrid[i][gridIndexColumn] != playerIdentifier) {
                 break;
             }
             if(i == mutableRowIndex + 3) {
@@ -74,12 +70,6 @@ public class VierGewinnt {
                 return true;
             }
         }
-
-        //diagonal
-        for(int i = 0; i < 4; i++){
-
-        }
-
         return false;
     }
 
@@ -112,13 +102,13 @@ public class VierGewinnt {
             gridSlot = playerMove(Player1);
             paintGrid();
             if(hasPlayerWon(gridSlot[0], gridSlot[1], Player1)) {
-                System.out.println("Player" + Player1 + "Won");
+                System.out.println("Player " + Player1 + "Won");
                 break;
             }
             gridSlot = playerMove(Player2);
             paintGrid();
             if(hasPlayerWon(gridSlot[0], gridSlot[1], Player2)) {
-                System.out.println("Player" + Player1 + "Won");
+                System.out.println("Player " + Player2 + "Won");
                 break;
             }
         }
