@@ -52,15 +52,30 @@ public class VierGewinnt {
                 return true;
             }
         }
-        
-        //diagonal
-        for(int i = 0; i < 4; i++){
 
+        //diagonal
+        //horizontal
+        for(int i = mutableColumnsIndex, j = mutableRowIndex; i >= 0 && j >= 0; i--,j--){
+            mutableColumnsIndex = i;
+            if (gameGrid[gridIndexRow][i] == playerIdentifier) {
+                continue;
+            }
+            mutableColumnsIndex = i + 1;
+            break;
+        }
+        System.out.println("search leftmost index index:" + mutableColumnsIndex);
+        for(int i = mutableColumnsIndex; i < mutableColumnsIndex + 4; i++){
+            if (gameGrid[gridIndexRow][i] != playerIdentifier) {
+                break;
+            }
+            if(i == mutableColumnsIndex + 3) {
+                System.out.println(i);
+                return true;
+            }
         }
 
-        if(gridIndexRow > 2) return false;
         //vertical
-        //search bottommost
+        if(gridIndexRow > 2) return false;
         for(int i = gridIndexRow; i < gridIndexRow + 4; i++){
             if (gameGrid[i][gridIndexColumn] != playerIdentifier) {
                 break;
